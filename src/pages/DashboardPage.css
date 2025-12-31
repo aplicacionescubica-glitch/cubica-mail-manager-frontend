@@ -1,0 +1,1908 @@
+/* ================= ROOT DASHBOARD ================= */
+
+.app-root--dashboard {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 32px;
+  padding-bottom: 40px;
+  background:
+    radial-gradient(circle at top left, #e0f2fe 0, transparent 55%),
+    radial-gradient(circle at bottom right, #fee2e2 0, transparent 55%),
+    linear-gradient(135deg, #0f172a, #020617);
+}
+
+/* Contenedor general del dashboard */
+.dashboard-shell {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 24px;
+  color: #0f172a;
+  animation: dashboard-shell-in 220ms ease-out;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Layout principal: sidebar + main, ocupa casi todo el alto */
+.dashboard-layout {
+  display: flex;
+  gap: 24px;
+  min-height: calc(100vh - 120px);
+  align-items: stretch;
+}
+
+/* ================= SIDEBAR ================= */
+
+.dashboard-sidebar {
+  width: 320px;
+  border-radius: 24px;
+  /* Más glass, menos sólido */
+  background: linear-gradient(
+    150deg,
+    rgba(248, 250, 252, 0.55),
+    rgba(226, 232, 240, 0.45)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.45),
+    0 0 0 1px rgba(15, 23, 42, 0.26);
+  padding: 22px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.dashboard-sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.dashboard-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #bfdbfe, #e0f2fe);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d1d5db;
+}
+
+.dashboard-avatar-initial {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+.dashboard-sidebar-user-texts {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-sidebar-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.dashboard-sidebar-email {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* Navegación vertical */
+.dashboard-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dashboard-nav-item {
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 0.86rem;
+  color: #374151;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition:
+    background-color 150ms ease-out,
+    color 150ms ease-out,
+    transform 80ms ease-out;
+}
+
+.dashboard-nav-item:hover {
+  background-color: #e5f0ff;
+  transform: translateX(1px);
+}
+
+.dashboard-nav-item--active {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #f9fafb;
+}
+
+/* Botón cerrar sesión más grande */
+.dashboard-sidebar-logout {
+  margin-top: 26px;
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: rgba(249, 250, 251, 0.96);
+  color: #111827;
+  transition:
+    background-color 140ms ease-out,
+    box-shadow 140ms ease-out,
+    transform 80ms ease-out;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.3);
+}
+
+.dashboard-sidebar-logout:hover {
+  background-color: #eff6ff;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.38);
+}
+
+.dashboard-sidebar-logout:active {
+  transform: translateY(0);
+}
+
+/* ================= ÁREA PRINCIPAL ================= */
+
+.dashboard-main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Header superior tipo barra Material con glass */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 24px;
+  padding: 14px 20px;
+  /* Más translúcido para que se note el fondo */
+  background: linear-gradient(
+    135deg,
+    rgba(248, 250, 252, 0.6),
+    rgba(226, 232, 240, 0.5)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  box-shadow:
+    0 16px 36px rgba(15, 23, 42, 0.45),
+    0 0 0 1px rgba(15, 23, 42, 0.24);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.dashboard-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-logo-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: rgba(239, 246, 255, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-logo-img {
+  max-width: 26px;
+  max-height: 26px;
+}
+
+.dashboard-header-texts {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-app-name {
+  font-size: 0.96rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.dashboard-app-sub {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.dashboard-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-user-role {
+  font-size: 0.75rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #1f2937;
+  background-color: #eff6ff;
+}
+
+/* Contenido principal: centro + panel derecho */
+.dashboard-main {
+  display: grid;
+  grid-template-columns: minmax(0, 3.8fr) minmax(320px, 1.8fr);
+  gap: 20px;
+  height: 100%;
+}
+
+/* Panel central con efecto glass más transparente */
+.dashboard-main-panel {
+  border-radius: 24px;
+  padding: 22px 24px 26px;
+  background: radial-gradient(
+    circle at top,
+    rgba(239, 246, 255, 0.7) 0,
+    rgba(249, 250, 251, 0.55) 55%
+  );
+  border: 1px solid rgba(209, 213, 219, 0.6);
+  box-shadow:
+    0 18px 38px rgba(15, 23, 42, 0.5),
+    0 0 0 1px rgba(15, 23, 42, 0.25);
+  animation: dashboard-panel-in 210ms ease-out;
+  display: flex;
+  flex-direction: column;
+  min-height: 440px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Cabecera del contenido central */
+.dashboard-main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-main-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.dashboard-main-sub {
+  margin-top: 4px;
+  font-size: 0.82rem;
+  color: #6b7280;
+}
+
+.dashboard-main-period {
+  font-size: 0.78rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background-color: rgba(239, 246, 255, 0.9);
+  border: 1px solid rgba(209, 213, 219, 0.7);
+  color: #1f2937;
+}
+
+/* Grid de tarjetas del centro */
+.dashboard-main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+  gap: 20px;
+  flex: 1;
+}
+
+/* ================= TARJETAS ================= */
+
+.dashboard-card {
+  border-radius: 20px;
+  padding: 18px 16px 20px;
+  background: linear-gradient(
+    145deg,
+    rgba(248, 250, 252, 0.45),
+    rgba(229, 231, 235, 0.4)
+  );
+  border: 1px solid rgba(209, 213, 219, 0.55);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.4);
+  transition:
+    transform 120ms ease-out,
+    box-shadow 140ms ease-out,
+    border-color 140ms ease-out,
+    background-color 140ms ease-out;
+  min-height: 170px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.48);
+}
+
+/* Card principal: azul muy suave y translúcido */
+.dashboard-card--primary {
+  border-color: rgba(129, 140, 248, 0.65);
+  background: linear-gradient(
+    145deg,
+    rgba(219, 234, 254, 0.5),
+    rgba(239, 246, 255, 0.45)
+  );
+  min-height: 190px;
+}
+
+/* Card compacta */
+.dashboard-card--compact {
+  padding: 14px 14px 16px;
+}
+
+/* Card tip derecha: amarillo pastel translúcido */
+.dashboard-card--tip {
+  margin-top: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(254, 249, 195, 0.5),
+    rgba(255, 251, 235, 0.45)
+  );
+  border-color: rgba(250, 204, 21, 0.8);
+}
+
+.dashboard-card-title {
+  font-size: 0.97rem;
+  font-weight: 500;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.dashboard-card-sub {
+  font-size: 0.8rem;
+  color: #111827;
+  margin-bottom: 14px;
+}
+
+/* Métricas resumen */
+.dashboard-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.dashboard-metric {
+  padding: 9px 10px;
+  border-radius: 14px;
+  background-color: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(229, 231, 235, 0.9);
+}
+
+.dashboard-metric-label {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.dashboard-metric-value {
+  margin-top: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1d4ed8;
+}
+
+/* Listas etiqueta/valor */
+.dashboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dashboard-list--stacked {
+  gap: 6px;
+}
+
+.dashboard-list-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.8rem;
+}
+
+.dashboard-list-label {
+  color: #0f172a;
+}
+
+.dashboard-list-value {
+  color: #111827;
+}
+
+/* Panel derecho con separación más uniforme */
+.dashboard-right-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Placeholders de secciones */
+.dashboard-section-placeholder {
+  padding: 4px 2px 2px;
+}
+
+/* Tip panel textos */
+.dashboard-tip-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.dashboard-tip-text {
+  font-size: 0.8rem;
+  color: #1f2937;
+}
+
+/* ================= ANIMACIONES ================= */
+
+@keyframes dashboard-shell-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dashboard-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1180px) {
+  .dashboard-shell {
+    padding: 0 16px;
+  }
+
+  .dashboard-layout {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .dashboard-sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .dashboard-sidebar-user {
+    margin-bottom: 0;
+  }
+
+  .dashboard-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .dashboard-sidebar-logout {
+    max-width: 160px;
+  }
+
+  .dashboard-main {
+    grid-template-columns: minmax(0, 1fr);
+    height: auto;
+  }
+
+  .dashboard-right-panel {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 720px) {
+  .dashboard-main-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .dashboard-main-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ================= MAIL QUOTES PANEL ================= */
+
+.mq-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Header del panel (título + filtros) */
+.mq-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.mq-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.mq-sub {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* Filtros (buscador + estado) */
+.mq-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;      /* siempre en la misma fila en desktop */
+}
+
+.mq-search {
+  min-width: 220px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 0.82rem;
+  background-color: #f9fafb;
+  color: #111827;
+  outline: none;
+  transition:
+    border-color 140ms ease-out,
+    box-shadow 140ms ease-out,
+    background-color 140ms ease-out;
+  flex: 1 1 260px;        /* se estira y deja espacio al select */
+}
+
+.mq-search::placeholder {
+  color: #9ca3af;
+}
+
+.mq-search:focus {
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.18);
+}
+
+.mq-select {
+  min-width: 160px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 0.8rem;
+  background-color: #f9fafb;
+  color: #111827;
+  outline: none;
+  transition:
+    border-color 140ms ease-out,
+    box-shadow 140ms ease-out,
+    background-color 140ms ease-out;
+  flex: 0 0 auto;
+}
+
+.mq-select:focus {
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.18);
+}
+
+/* Cuerpo del panel */
+.mq-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Mensajes de info / error */
+.mq-info {
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+.mq-error {
+  font-size: 0.8rem;
+  color: #b91c1c;
+}
+
+/* Resumen arriba de la tabla */
+.mq-summary {
+  font-size: 0.78rem;
+  color: #4b5563;
+}
+
+/* Contenedor con scroll para la tabla */
+.mq-table-wrap {
+  margin-top: 4px;
+  border-radius: 14px;
+  border: 1px solid rgba(209, 213, 219, 0.55);
+  background: linear-gradient(
+    145deg,
+    rgba(248, 250, 252, 0.42),
+    rgba(229, 231, 235, 0.38)
+  );
+  max-height: 360px;
+  overflow-x: auto; /* Scroll horizontal para ver todas las columnas */
+  overflow-y: auto;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Tabla */
+.mq-table {
+  width: 100%;
+  min-width: 960px; /* Ancho mínimo para forzar scroll lateral cuando falte espacio */
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.mq-table thead {
+  position: sticky;
+  top: 0;
+  background: rgba(243, 244, 246, 0.92);
+  z-index: 1;
+}
+
+.mq-table th,
+.mq-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid rgba(209, 213, 219, 0.9);
+  white-space: nowrap;
+}
+
+.mq-table th {
+  font-weight: 500;
+  color: #111827;
+}
+
+.mq-table td {
+  color: #111827;
+}
+
+/* Zebra rows suaves y translúcidas */
+.mq-table tbody tr:nth-child(odd) {
+  background-color: rgba(249, 250, 251, 0.88);
+}
+
+.mq-table tbody tr:nth-child(even) {
+  background-color: rgba(243, 244, 246, 0.84);
+}
+
+.mq-table tbody tr:hover {
+  background-color: rgba(191, 219, 254, 0.7);
+}
+
+/* Ajuste para columnas largas (asunto/cliente) */
+.mq-table td:nth-child(2),
+.mq-table td:nth-child(3) {
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive: apilar filtros en pantallas pequeñas */
+@media (max-width: 880px) {
+  .mq-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mq-filters {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap; /* en móviles sí puede saltar de línea */
+  }
+
+  .mq-search {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+/* ================= EMAIL SYNC PANEL ================= */
+
+.email-sync {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.email-sync-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.email-sync-btn {
+  border: 1px solid rgba(209, 213, 219, 0.95);
+  background: rgba(249, 250, 251, 0.92);
+  color: #111827;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.28);
+  transition:
+    background-color 140ms ease-out,
+    border-color 140ms ease-out,
+    box-shadow 140ms ease-out,
+    transform 80ms ease-out;
+  white-space: nowrap;
+}
+
+.email-sync-btn:hover {
+  background: rgba(239, 246, 255, 0.95);
+  border-color: rgba(59, 130, 246, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px rgba(15, 23, 42, 0.34);
+}
+
+.email-sync-btn:active {
+  transform: translateY(0);
+}
+
+.email-sync-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.email-sync-row {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.email-sync-label {
+  font-size: 0.78rem;
+  color: #6b7280;
+  padding-left: 2px;
+}
+
+.email-sync-select,
+.email-sync-input {
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 0.82rem;
+  background-color: #f9fafb;
+  color: #111827;
+  outline: none;
+  transition:
+    border-color 140ms ease-out,
+    box-shadow 140ms ease-out,
+    background-color 140ms ease-out;
+  width: 100%;
+}
+
+.email-sync-select:focus,
+.email-sync-input:focus {
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.18);
+}
+
+.email-sync-error {
+  font-size: 0.8rem;
+  color: #b91c1c;
+  background: rgba(254, 226, 226, 0.7);
+  border: 1px solid rgba(248, 113, 113, 0.55);
+  border-radius: 14px;
+  padding: 8px 10px;
+}
+
+.email-sync .dashboard-list {
+  gap: 6px;
+}
+
+.email-sync .dashboard-list-item {
+  padding: 7px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(209, 213, 219, 0.6);
+  background: linear-gradient(
+    145deg,
+    rgba(248, 250, 252, 0.5),
+    rgba(229, 231, 235, 0.42)
+  );
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.22);
+}
+
+.email-sync .dashboard-list-label {
+  color: #374151;
+}
+
+.email-sync .dashboard-list-value {
+  color: #111827;
+  font-weight: 500;
+}
+
+.email-sync-details {
+  margin-top: 6px;
+  border-radius: 14px;
+  border: 1px solid rgba(209, 213, 219, 0.6);
+  background: linear-gradient(
+    145deg,
+    rgba(248, 250, 252, 0.45),
+    rgba(229, 231, 235, 0.38)
+  );
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.26);
+  padding: 8px 10px;
+}
+
+.email-sync-summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: #111827;
+  font-weight: 500;
+}
+
+.email-sync-details-body {
+  margin-top: 8px;
+}
+
+.email-sync-details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.email-sync-details-item {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  padding: 7px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(209, 213, 219, 0.6);
+  background: rgba(249, 250, 251, 0.9);
+}
+
+.email-sync-details-status {
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1d4ed8;
+}
+
+.email-sync-details-text {
+  font-size: 0.78rem;
+  color: #111827;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.email-sync-muted {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin: 6px 0 0;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .email-sync-row {
+    grid-template-columns: 1fr;
+  }
+
+  .email-sync-actions {
+    gap: 6px;
+  }
+
+  .email-sync-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ================= EMAIL FLOW PANEL ================= */
+
+.email-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.email-flow-error {
+  font-size: 0.8rem;
+  color: #b91c1c;
+  background: rgba(254, 226, 226, 0.7);
+  border: 1px solid rgba(248, 113, 113, 0.55);
+  border-radius: 14px;
+  padding: 8px 10px;
+}
+
+.email-flow .dashboard-list {
+  gap: 6px;
+}
+
+.email-flow .dashboard-list-item {
+  padding: 7px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(209, 213, 219, 0.6);
+  background: linear-gradient(
+    145deg,
+    rgba(248, 250, 252, 0.5),
+    rgba(229, 231, 235, 0.42)
+  );
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.22);
+}
+
+.email-flow .dashboard-list-label {
+  color: #374151;
+}
+
+.email-flow .dashboard-list-value {
+  color: #111827;
+  font-weight: 500;
+}
+
+.email-flow-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.email-flow-btn {
+  border: 1px solid rgba(209, 213, 219, 0.95);
+  background: rgba(249, 250, 251, 0.92);
+  color: #111827;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.28);
+  transition:
+    background-color 140ms ease-out,
+    border-color 140ms ease-out,
+    box-shadow 140ms ease-out,
+    transform 80ms ease-out;
+  white-space: nowrap;
+}
+
+.email-flow-btn:hover {
+  background: rgba(239, 246, 255, 0.95);
+  border-color: rgba(59, 130, 246, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px rgba(15, 23, 42, 0.34);
+}
+
+.email-flow-btn:active {
+  transform: translateY(0);
+}
+
+.email-flow-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 720px) {
+  .email-flow-actions {
+    justify-content: stretch;
+  }
+
+  .email-flow-btn {
+    width: 100%;
+  }
+}
+
+/* ================= EMAIL FLOW PANEL ================= */
+
+.email-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.email-flow-error {
+  font-size: 0.8rem;
+  color: #b91c1c;
+  background: rgba(254, 226, 226, 0.7);
+  border: 1px solid rgba(248, 113, 113, 0.55);
+  border-radius: 14px;
+  padding: 8px 10px;
+}
+
+.email-flow .dashboard-list {
+  gap: 6px;
+}
+
+.email-flow .dashboard-list-item {
+  padding: 7px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(209, 213, 219, 0.6);
+  background: linear-gradient(
+    145deg,
+    rgba(248, 250, 252, 0.5),
+    rgba(229, 231, 235, 0.42)
+  );
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.22);
+}
+
+.email-flow .dashboard-list-label {
+  color: #374151;
+}
+
+.email-flow .dashboard-list-value {
+  color: #111827;
+  font-weight: 500;
+}
+
+/* ================= QUOTES DAILY SUMMARY PANEL ================= */
+
+.quotes-daily {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quotes-daily-error {
+  font-size: 0.8rem;
+  color: #b91c1c;
+  background: rgba(254, 226, 226, 0.7);
+  border: 1px solid rgba(248, 113, 113, 0.55);
+  border-radius: 14px;
+  padding: 8px 10px;
+}
+
+.quotes-daily-hint {
+  margin: 2px 2px 0;
+  font-size: 0.76rem;
+  color: #6b7280;
+}
+/* Separación label/valor en Resumen diario */
+.quotes-daily .dashboard-metric {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.quotes-daily .dashboard-metric-label {
+  flex: 1;
+  padding-right: 10px;
+}
+
+.quotes-daily .dashboard-metric-value {
+  min-width: 26px;
+  text-align: right;
+}
+
+/* Click a Gmail desde la tabla de cotizaciones */
+.mq-table tbody tr.mq-row-click {
+  cursor: pointer;
+}
+
+.mq-table tbody tr.mq-row-click:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+  border-radius: 10px;
+}
+
+/* ================= EMAIL HISTORY PANEL ================= */
+
+/* El historial no debe verse como “card dentro de card” */
+.mq-panel--history {
+  background: transparent;
+  padding: 0;
+}
+
+/* Mantiene el header limpio (solo filtros) */
+.mq-header--history {
+  margin-bottom: 10px;
+}
+
+/* Reutiliza la estética pill del buscador para fechas */
+.mq-date {
+  min-width: 170px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 0.82rem;
+  background-color: #f9fafb;
+  color: #111827;
+  outline: none;
+  transition:
+    border-color 140ms ease-out,
+    box-shadow 140ms ease-out,
+    background-color 140ms ease-out;
+}
+
+.mq-date:focus {
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.18);
+}
+
+/* Ajuste fino del wrap de filtros para el historial */
+.mq-filters--history {
+  gap: 10px;
+}
+
+.mq-filters--history .mq-search {
+  flex: 1 1 320px;
+  min-width: 240px;
+}
+
+.mq-filters--history .mq-date {
+  flex: 0 0 auto;
+}
+
+/* Tabla del historial: considera columna Preview */
+.mq-panel--history .mq-table {
+  min-width: 1040px;
+}
+
+/* Asunto con ellipsis */
+.mq-panel--history .mq-table td:nth-child(3) {
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Preview con ellipsis */
+.mq-panel--history .mq-snippet {
+  max-width: 420px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+  .mq-filters--history {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .mq-filters--history .mq-search {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .mq-filters--history .mq-date {
+    flex: 1 1 180px;
+    min-width: 0;
+  }
+
+  .mq-panel--history .mq-snippet {
+    max-width: 280px;
+  }
+}
+/* UsersPanel */
+.users-panel {
+  width: 100%;
+}
+
+.users-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.users-titles {
+  min-width: 220px;
+}
+
+.users-title {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.users-subtitle {
+  margin-top: 4px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.users-filters {
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr 0.9fr 0.5fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.users-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.users-row-sm {
+  max-width: 140px;
+}
+
+.users-label {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+.users-input,
+.users-select {
+  height: 36px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.users-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.users-input:focus,
+.users-select:focus {
+  border-color: rgba(245, 207, 115, 0.55);
+  box-shadow: 0 0 0 3px rgba(245, 207, 115, 0.14);
+}
+
+.users-table-wrap {
+  width: 100%;
+  overflow: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 980px;
+}
+
+.users-table thead th {
+  position: sticky;
+  top: 0;
+  background: rgba(14, 16, 23, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 12px;
+  text-align: left;
+  padding: 10px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+}
+
+.users-table tbody td {
+  padding: 10px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.86);
+  vertical-align: middle;
+}
+
+.users-td-center {
+  text-align: center;
+  padding: 16px 10px;
+  opacity: 0.85;
+}
+
+.users-td-strong {
+  font-weight: 800;
+}
+
+.users-td-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.users-th-actions {
+  width: 220px;
+  text-align: right;
+}
+
+.users-td-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.users-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.86);
+  white-space: nowrap;
+}
+
+.users-pill.is-ok {
+  border-color: rgba(90, 220, 160, 0.35);
+  background: rgba(90, 220, 160, 0.10);
+}
+
+.users-pill.is-warn {
+  border-color: rgba(245, 207, 115, 0.35);
+  background: rgba(245, 207, 115, 0.10);
+}
+
+.users-pill.is-admin {
+  border-color: rgba(130, 170, 255, 0.35);
+  background: rgba(130, 170, 255, 0.10);
+}
+
+.users-footer {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.users-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.users-pager {
+  display: flex;
+  gap: 8px;
+}
+
+.users-btn {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.users-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.users-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.users-btn-ghost {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ================= USERS PANEL (optimizado, sin parches) ================= */
+
+.users-panel {
+  background: transparent;
+  padding: 0;
+}
+
+/* El Dashboard ya muestra el título de la sección */
+.users-titles,
+.users-title,
+.users-subtitle {
+  display: none;
+}
+
+/* Header: botón alineado a la derecha */
+.users-head {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.users-head-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Botón "Nuevo usuario" consistente con los demás (pill blanco) */
+.users-head-actions .email-sync-btn {
+  border-radius: 999px;
+  padding: 9px 14px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111827;
+  border: 1px solid rgba(209, 213, 219, 0.75);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
+}
+
+.users-head-actions .email-sync-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+/* Filtros: grid estable (sin overlaps) */
+.users-filters {
+  display: grid;
+  grid-template-columns:
+    minmax(160px, 220px)  /* buscador más pequeño */
+    minmax(170px, 210px)  /* rol */
+    minmax(170px, 210px)  /* estado */
+    minmax(110px, 130px); /* límite */
+  gap: 12px;
+  align-items: end;
+  justify-content: end;
+  margin-bottom: 12px;
+}
+
+.users-row {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.users-row-sm {
+  max-width: 130px;
+}
+
+/* Labels: visibles solo para selects */
+.users-label {
+  display: none;
+  font-size: 0.72rem;
+  color: #6b7280;
+  margin: 0 0 6px 10px;
+}
+
+.users-row--select .users-label {
+  display: block;
+}
+
+.users-row--search .users-label {
+  display: none;
+}
+
+/* Inputs/selects: pill blancos como el resto */
+.users-input,
+.users-select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(209, 213, 219, 0.8);
+  background: rgba(255, 255, 255, 0.92);
+  color: #111827;
+  font-size: 0.86rem;
+  outline: none;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.10);
+  transition: border-color 140ms ease-out, box-shadow 140ms ease-out, background-color 140ms ease-out;
+}
+
+.users-input::placeholder {
+  color: #9ca3af;
+}
+
+.users-input:focus,
+.users-select:focus {
+  border-color: rgba(59, 130, 246, 0.55);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12), 0 10px 20px rgba(15, 23, 42, 0.10);
+}
+
+/* Tabla clara, consistente */
+.users-table-wrap {
+  border-radius: 14px;
+  border: 1px solid rgba(209, 213, 219, 0.6);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.users-table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+.users-table thead th {
+  position: sticky;
+  top: 0;
+  background: rgba(249, 250, 251, 0.92);
+  color: #111827;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(209, 213, 219, 0.8);
+  white-space: nowrap;
+}
+
+.users-table tbody td {
+  padding: 10px 12px;
+  color: #111827;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.85);
+  white-space: nowrap;
+}
+
+.users-table tbody tr:hover {
+  background: rgba(243, 244, 246, 0.9);
+}
+
+.users-td-strong {
+  font-weight: 600;
+}
+
+.users-td-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.users-td-center {
+  text-align: center;
+  padding: 16px 12px;
+  color: #6b7280;
+}
+
+/* Pills */
+.users-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(209, 213, 219, 0.8);
+  background: rgba(243, 244, 246, 0.9);
+  font-size: 0.78rem;
+  color: #111827;
+}
+
+.users-pill.is-ok {
+  border-color: rgba(34, 197, 94, 0.35);
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.users-pill.is-warn {
+  border-color: rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.users-pill.is-admin {
+  border-color: rgba(59, 130, 246, 0.35);
+  background: rgba(59, 130, 246, 0.12);
+}
+
+/* Acciones */
+.users-th-actions {
+  text-align: right;
+  width: 220px;
+}
+
+.users-td-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Botones pill */
+.users-btn {
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(209, 213, 219, 0.75);
+  color: #111827;
+  cursor: pointer;
+  transition: border-color 140ms ease-out, background-color 140ms ease-out, transform 80ms ease-out;
+}
+
+.users-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(59, 130, 246, 0.35);
+  transform: translateY(-1px);
+}
+
+.users-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.users-btn-ghost {
+  box-shadow: none;
+}
+
+/* Footer */
+.users-footer {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.users-meta {
+  font-size: 0.86rem;
+  color: #6b7280;
+  display: flex;
+  gap: 14px;
+}
+
+.users-pager {
+  display: flex;
+  gap: 10px;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .users-filters {
+    grid-template-columns: 1fr 1fr;
+    justify-content: stretch;
+  }
+
+  .users-row--search {
+    grid-column: 1 / -1;
+  }
+
+  .users-row-sm {
+    max-width: unset;
+  }
+}
+
+/* Scroll del textarea (Responder cotización) alineado con el estilo glass */
+.mq-reply-textarea {
+  overflow: auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.75) transparent;
+}
+
+.mq-reply-textarea::-webkit-scrollbar {
+  width: 12px;
+}
+
+.mq-reply-textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mq-reply-textarea::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.55);
+  border-radius: 999px;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+.mq-reply-textarea::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.75);
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+.mq-reply-textarea::-webkit-scrollbar-thumb:active {
+  background: rgba(148, 163, 184, 0.9);
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+/* ================= INVENTORY PANEL (alineación UI) ================= */
+
+/* Botón base (pill) consistente con EmailSync */
+.mq-btn {
+  border: 1px solid rgba(209, 213, 219, 0.95);
+  background: rgba(249, 250, 251, 0.92);
+  color: #111827;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.28);
+  transition:
+    background-color 140ms ease-out,
+    border-color 140ms ease-out,
+    box-shadow 140ms ease-out,
+    transform 80ms ease-out;
+  white-space: nowrap;
+}
+
+.mq-btn:hover {
+  background: rgba(239, 246, 255, 0.95);
+  border-color: rgba(59, 130, 246, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px rgba(15, 23, 42, 0.34);
+}
+
+.mq-btn:active {
+  transform: translateY(0);
+}
+
+.mq-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Variante ghost para acciones secundarias */
+.mq-btn--ghost {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(209, 213, 219, 0.75);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+}
+
+.mq-btn--ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.22);
+}
+
+/* Alertas simples del panel (cargando / lectura / error) */
+.mq-alert {
+  font-size: 0.8rem;
+  color: #374151;
+  background: rgba(243, 244, 246, 0.78);
+  border: 1px solid rgba(209, 213, 219, 0.7);
+  border-radius: 14px;
+  padding: 8px 10px;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mq-alert--danger {
+  color: #991b1b;
+  background: rgba(254, 226, 226, 0.72);
+  border-color: rgba(248, 113, 113, 0.55);
+}
+
+/* Ajuste fino: tablas dentro de cards del dashboard */
+.dashboard-card .mq-table {
+  font-size: 0.8rem;
+}
+
+.dashboard-card .mq-table thead {
+  background: rgba(249, 250, 251, 0.92);
+}
+
+/* ================= INVENTORY SUMMARY (Dashboard) ================= */
+
+/* Caja de métrica compacta tipo “glass” */
+.dashboard-mini-stat {
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(229, 231, 235, 0.9);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dashboard-mini-stat:hover {
+  box-shadow: 0 14px 26px rgba(15, 23, 42, 0.22);
+}
+
+.dashboard-mini-stat-label {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.dashboard-mini-stat-value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1d4ed8;
+  line-height: 1.15;
+}
+
+/* Opcional: si quieres que el título/subtítulo de inventario respire igual */
+.dashboard-card .dashboard-card-sub {
+  color: #111827;
+}
+
+/* Responsive: evita que las métricas se aprieten demasiado */
+@media (max-width: 720px) {
+  .dashboard-mini-stat {
+    padding: 10px 10px;
+  }
+
+  .dashboard-mini-stat-value {
+    font-size: 0.98rem;
+  }
+}
+/* ================= Metrics ================= */
+
+/* Grid de métricas: 2 columnas, igual a la card de Cotizaciones */
+.dashboard-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* Card tipo “pill” con texto izquierda y cifra derecha */
+.dashboard-metric {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 14px;
+  padding: 12px 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.dashboard-metric-label {
+  font-size: 0.86rem;
+  color: rgba(17, 24, 39, 0.75);
+  line-height: 1.2;
+
+  /* Permite 2 líneas como “Pendientes por responder” */
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.dashboard-metric-value {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1d4ed8;
+
+  min-width: 28px;
+  text-align: right;
+}
+
+/* En pantallas pequeñas pasa a 1 columna (opcional) */
+@media (max-width: 520px) {
+  .dashboard-metrics {
+    grid-template-columns: 1fr;
+  }
+}
